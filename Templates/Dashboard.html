@@ -1,0 +1,102 @@
+<div ng-controller="PortalUFMGCtrl">
+	
+	<div ng-include="'Templates/_nav.html'"></div>
+
+	<div  class="container">
+		
+		<div class="row">
+			<h1 class="col s12 title-noticies">Portal de Notícias</h1>
+			<a class="waves-effect waves-light modal-trigger right" href="#modalNotice"><i class="material-icons prefix">add_circle_outline</i> Adicionar Notícia</a>
+		</div>
+				
+		<main>			
+			<!--Pesquisa geral -->
+			<div class="row">
+			    <form class="col s12">
+				    <div class="row">
+				        <div class="input-field col s12">
+					        <i class="material-icons prefix">search</i>
+					        <input type="text" id="icon_prefix2" ng-model="search">
+					        <label for="icon_prefix2">Digite a notícia de interesse.</label>
+				        </div>
+				    </div>
+			    </form>
+			</div>
+				
+			<dir-pagination-controls max-size="noticias.lenght" direction-links="true" boundary-links="true"></dir-pagination-controls>
+
+			<div dir-paginate="noticia in noticias | filter:search | orderBy:post_date:reverse |itemsPerPage:5 ">
+				<div class="col s12 m7">
+				    <h2 class="header"></h2>
+				    <div class="card horizontal">
+				      <div class="card-image wd-image">
+				        <img src="Files/img/ufmg.jpg">
+				      </div>
+				      <div class="card-stacked">
+				        <div class="card-content">
+				          <h2 class="title-card">{{noticia.title}}</h2>
+				          <span><span class="publish-general">Publicado em: </span>{{noticia.post_date | date:'dd/MM/yyyy'}}</span>
+				        </div>
+				        <div class="card-action">
+				          <a  disabled>Editar</a>
+				          <a  disabled>Visualizar</a>
+				        </div>
+				      </div>
+				    </div>
+				</div>	
+			</div>			
+		</main>
+
+		<dir-pagination-controls max-size="noticias.lenght" direction-links="true" boundary-links="true"></dir-pagination-controls>
+
+			
+		<script type="text/javascript">		
+			$(document).ready(function(){
+				$('.modal').modal();
+			});	
+		</script>
+	  
+		  <!-- Modal Cadastro Notícia -->
+		 <div id="modalNotice" class="modal">
+		    <div class="modal-content">
+		      	<h4>Acrescente uma notícia para o Portal</h4>   
+
+				<form name="cadastroForm" novalidate>	
+			    	<div class="row">
+				    	<div class="input-field col s12" hidden>
+				          <input type="text" ng-model="noticia.type" ng-value="2">
+				          <label>Tipo</label>
+				        </div>
+				        <div class="input-field col s6">
+				          <input  type="text" ng-model="noticia.title" required>
+				          <label>Título</label>
+				        </div>
+				        <div class="input-field col s6">
+				          <input  type="text" ng-model="noticia.subtitle" required>
+				          <label>Subtítulo</label>
+				        </div>
+				    </div>
+				    <div class="row">
+				        <div class="input-field col s12">
+				          <input  type="text" ng-model="noticia.tags">
+				          <label>Palavras Chaves</label>
+				        </div>
+				    </div>
+				    <div class="row">
+				        <div class="input-field col s12">
+				          <textarea class="materialize-textarea" required></textarea>
+				          <label>Texto</label>
+				        </div>
+				    </div>
+				</form>		  	
+		    </div>
+		    
+		    <div class="modal-footer">
+		      <a class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+		      <a class="waves-effect waves-green btn-flat" ng-click="salvarNoticia(noticia)" ng-disabled="cadastroForm.$invalid">Salvar</a>
+		    </div>
+		 </div>
+		  <!-- Modal Cadastro Notícia -->
+	</div>
+</div>
+

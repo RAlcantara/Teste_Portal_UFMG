@@ -1,0 +1,38 @@
+.light-blue-header {
+	background-color: #1f3748;
+	color: #fff;
+}
+
+h2 {
+	font-size: 30px;
+	font-weight: 700;
+	color: #1f3748;
+}
+
+.title-noticies{
+	font-size: 45px;
+	font-weight: 700;
+	color: #1f3748;
+	text-shadow: 0.1em 0.1em rgba(51, 51, 51, 0.28);
+}
+
+.wd-image {
+	max-width: 32% !important;
+}
+
+h2.title-card {
+	font-size: 26px;
+}
+
+span {
+	font-size: 13.5px;
+}
+
+span .publish-general {
+	color: #ffab40;
+	font-weight: 700;
+	
+}
+
+
+
